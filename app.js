@@ -3,8 +3,14 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 const passengerRoutes = require('./src/routes/passengerRoutes');
+const routeRoutes = require('./src/routes/passengerRoutes');
+
 app.use(express.json());
 app.use('/passenger',passengerRoutes);
+app.use('/bus-routes',passengerRoutes);
+app.use
+
+
 
 const html = `
 <!DOCTYPE html>
@@ -55,4 +61,15 @@ const html = `
     </section>
   </body>
 </html>
-`
+`;
+
+
+// Route to serve the HTML page 
+app.get("/", (req, res) => res.type("html").send(html));
+// Start the server 
+const server = app.listen(port, () => 
+  console.log(`Example app listening on port 
+    ${port}!`) 
+  ); 
+  server.keepAliveTimeout = 120 * 1000; 
+  server.headersTimeout = 120 * 1000;
