@@ -8,7 +8,7 @@ class RoutesServices{
         }
         
         catch (error){
-            throw new Error("error popup while fetching all route information Error :$(error.message)");
+            throw new Error(`error popup while fetching all route information Error :${error.message}`);
         }
     }
 }
