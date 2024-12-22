@@ -1,4 +1,4 @@
-const BusTimeSchedulesService = require('../service/buTimeScheduleService');
+const BusTimeSchedulesService = require('../service/busTimeScheduleService');
 
 class BusTimeScheduleController {
     async getSchedulesByRouteId(req, res){
