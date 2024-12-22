@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('ntcdb', 'webapi', '9FQZcBptOyng4pghV07QPHXEi0oNMzXC', {
+const sequelize = new Sequelize('ntcdatabase', 'webapi', '9FQZcBptOyng4pghV07QPHXEi0oNMzXC', {
   host: 'dpg-cteluurtq21c73blfimg-a',
   port: 5432,
   dialect: 'postgres',
