@@ -11,7 +11,6 @@ app.use('/bus-routes',passengerRoutes);
 app.use
 
 
-
 const html = `
 <!DOCTYPE html>
 <html>
