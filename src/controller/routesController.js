@@ -4,7 +4,7 @@ class routeController {
     async getAllRoutes(req, res){
         try{
             const getAllRoutes = await routesService.getAllAvailableRoutes();
-            res.status(200).json({allRoutes});
+            res.status(200).json({getAllRoutes});
             console.log('fetched all available routes successfully');
         }
         catch(error){

@@ -3,11 +3,12 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 const passengerRoutes = require('./src/routes/passengerRoutes');
-const routeRoutes = require('./src/routes/passengerRoutes');
+const routeRoutes = require('./src/routes/RouteRoutes');
 
 app.use(express.json());
 app.use('/passenger',passengerRoutes);
-app.use('/bus-routes',passengerRoutes);
+//app.use('/bus-routes',passengerRoutes);
+app.use('/routes',routeRoutes);
 app.use
 
 
