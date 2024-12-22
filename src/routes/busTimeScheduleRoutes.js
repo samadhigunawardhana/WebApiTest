@@ -1,5 +1,5 @@
 const express = require('express');
-const BusTimeSchedulesController = require('../controller/butTimeSchedulesContoller');
+const BusTimeSchedulesController = require('../controller/butTimeScheduleContoller');
 
 const router = express.Router();
 
