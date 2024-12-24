@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /register:
+ * /schedules:
  *   get:
  *     summary: find all schedules
  *     description: Set all schedules by id

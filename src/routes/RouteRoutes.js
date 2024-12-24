@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /register:
+ * /bus-routes:
  *   get:
  *     summary: get All Routes
  *     description: set all routes
