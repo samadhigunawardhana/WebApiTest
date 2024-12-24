@@ -2,11 +2,15 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
+const swaggerUi = require('swagger-ui-express'); 
+const swaggerConfig = require('./src/swagger/swaggerConfig');
+
 const passengerRoutes = require('./src/routes/passengerRoutes');
 const routeRoutes = require('./src/routes/RouteRoutes');
 const busTimeschedule = require('./src/routes/busTimeScheduleRoutes')
 
 app.use(express.json());
+app.use('/api-check',swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 app.use('/passenger',passengerRoutes);
 app.use('/bus-routes',routeRoutes);
 app.use('/schedules',routeRoutes);
