@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const BusTimeScheduleModule = sequelize.define('bus_time_schedules', {
+const BusTimeScheduleModel = sequelize.define('bus_time_schedules', {
     slot_id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
