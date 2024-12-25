@@ -6,7 +6,7 @@ const router = express.Router();
 /**
  * @swagger
  * /schedules/FindSchedules:
- *   post:
+ *   get:
  *     summary: Find all schedules by Route ID
  *     description: Retrieve all bus schedules for a specific route ID.
  *     requestBody:
