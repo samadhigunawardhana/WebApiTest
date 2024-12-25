@@ -13,6 +13,6 @@ const router = express.Router();
  *       200:
  *         description: Successfully set all routes.
  */
-router.get('/getAllRoutes', routeController.getAllRoutes);
+router.get('/getAllRoutes', RouteControllerVariable.getAllRoutes);
 
 module.exports = router;
