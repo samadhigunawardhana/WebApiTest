@@ -4,7 +4,7 @@ const ScheduledBusDTO = require('../DataTransferObject/DetailsOfScheduledBus');
 
 class BusTimeScheduleRepository {
     async findByRouteId(route_id) {
-        return await BusTimeSchedules.findOne({ where: { route_id } });
+        return await BusTimeSchedules.findAll({ where: { route_id } });
     }
 
     async filterByArrivalTimeAndDestination(arrivalTime, destination) {

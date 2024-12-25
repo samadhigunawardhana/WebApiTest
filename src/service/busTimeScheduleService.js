@@ -3,6 +3,7 @@ const BusTimeScheduleRepository = require('../repository/busTimeScheduleReposito
 class BusTimeScheduleService {
     async getTimeScheduleByRouteId(route_id) {
         return await BusTimeScheduleRepository.findByRouteId(route_id);
+        
     }
 
     async filterByArrivalTimeAndDestination(arrivalTime, destination) {
