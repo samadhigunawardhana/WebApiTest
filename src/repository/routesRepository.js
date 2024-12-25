@@ -1,8 +1,8 @@
-const routesModel = require('../model/routesModel')
+const routeModel = require('../model/routesModel')
 
 class RoutesRepository {
     async ditectAllRoutes(){
-        return await routesModel.findAll()
+        return await routeModel.findAll()
     }
 }
 module.exports = new RoutesRepository();

@@ -1,9 +1,9 @@
-const routesService = require('../service/routesService');
+const RoutesServices = require('../service/routesService');
 
 class routeController {
     async getAllRoutes(req, res){
         try{
-            const getAllRoutes = await routesService.detectAllAvailableRoutes();
+            const getAllRoutes = await RoutesServices.detectAllAvailableRoutes();
             res.status(200).json({getAllRoutes});
             console.log('fetched all available routes successfully');
         }

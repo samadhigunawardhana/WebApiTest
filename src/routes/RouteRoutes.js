@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /bus-routes:
+ * /bus-routes/getAllRoutes:
  *   get:
  *     summary: get All Routes
  *     description: set all routes
@@ -13,6 +13,6 @@ const router = express.Router();
  *       200:
  *         description: Successfully set all routes.
  */
-router.get('/getAllRoutes', RouteControllerVariable.getAllRoutes);
+router.get('/getAllRoutes', routeController.getAllRoutes);
 
 module.exports = router;

@@ -1,8 +1,8 @@
-const  Busses = require('../model/busModel');
+const  Buses = require('../model/busModel');
 
 class BusesRepository{
     async findByBusNTC(ntc_no){
-        return await Busses.findAll({where: {ntc_no}})
+        return await Buses.findAll({where: {ntc_no}})
     }
 }
 
