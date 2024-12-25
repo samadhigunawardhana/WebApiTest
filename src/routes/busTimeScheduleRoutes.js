@@ -9,16 +9,13 @@ const router = express.Router();
  *   get:
  *     summary: Find all schedules by Route ID
  *     description: Retrieve all bus schedules for a specific route ID.
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               route_id:
- *                 type: integer
- *                 description: The route ID.
+ *     parameters:
+ *       - in: query
+ *         name: route_id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: The ID of the route.
  *     responses:
  *       200:
  *         description: Successfully fetched schedules.
