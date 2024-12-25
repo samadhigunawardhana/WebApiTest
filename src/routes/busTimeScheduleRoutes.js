@@ -6,47 +6,22 @@ const router = express.Router();
 /**
  * @swagger
  * /schedules/FindSchedules:
- *   get:
+ *   post:
  *     summary: Find all schedules by Route ID
- *     description: Retrieve all bus schedules associated with a specific route ID.
- *     parameters:
- *       - in: query
- *         name: route_id
- *         schema:
- *           type: integer
- *         required: true
- *         description: The ID of the route to retrieve schedules for.
+ *     description: Retrieve all bus schedules for a specific route ID.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               route_id:
+ *                 type: integer
+ *                 description: The route ID.
  *     responses:
  *       200:
  *         description: Successfully fetched schedules.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 slot_id:
- *                   type: integer
- *                   description: The slot ID of the schedule.
- *                 route_id:
- *                   type: integer
- *                   description: The route ID.
- *                 bus_ntc:
- *                   type: string
- *                   description: The bus NTC number.
- *                 departure_time:
- *                   type: string
- *                   format: time
- *                   description: The departure time.
- *                 arrival_time:
- *                   type: string
- *                   format: time
- *                   description: The arrival time.
- *                 scheduled_date:
- *                   type: string
- *                   description: The scheduled date.
- *                 status:
- *                   type: integer
- *                   description: The status of the schedule.
  *       400:
  *         description: Invalid input.
  *       500:
