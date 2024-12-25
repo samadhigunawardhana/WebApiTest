@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const Buses = require('./busModel');
-BusTimeSchedules.belongsTo(Buses, { foreignKey: 'bus_ntc', targetKey: 'ntc_no' });
+// const Buses = require('./busModel');
+// BusTimeSchedules.belongsTo(Buses, { foreignKey: 'bus_ntc', targetKey: 'ntc_no' });
 
 
 const BusTimeScheduleModel = sequelize.define('bus_time_schedules', {
