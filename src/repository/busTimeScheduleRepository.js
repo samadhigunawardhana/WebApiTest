@@ -1,6 +1,6 @@
 const BusTimeSchedules = require('../model/busTimeScheduleModel');
 const Buses = require('../model/busModel');
-const ScheduledBusDTO = require('../dto/DetailsOfScheduledBus');
+const ScheduledBusDTO = require('../DataTransferObject/DetailsOfScheduledBus');
 
 class BusTimeScheduleRepository {
     async findByRouteId(route_id) {
