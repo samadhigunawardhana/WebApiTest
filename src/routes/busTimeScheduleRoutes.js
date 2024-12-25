@@ -5,19 +5,58 @@ const router = express.Router();
 
 /**
  * @swagger
- * /schedules:
+ * /schedules/FindSchedules:
  *   get:
- *     summary: find all schedules
- *     description: Set all schedules by id
+ *     summary: Find all schedules by Route ID
+ *     description: Retrieve all bus schedules associated with a specific route ID.
+ *     parameters:
+ *       - in: query
+ *         name: route_id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: The ID of the route to retrieve schedules for.
  *     responses:
  *       200:
- *         description: Successfully Got schedules.
- */ 
+ *         description: Successfully fetched schedules.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 slot_id:
+ *                   type: integer
+ *                   description: The slot ID of the schedule.
+ *                 route_id:
+ *                   type: integer
+ *                   description: The route ID.
+ *                 bus_ntc:
+ *                   type: string
+ *                   description: The bus NTC number.
+ *                 departure_time:
+ *                   type: string
+ *                   format: time
+ *                   description: The departure time.
+ *                 arrival_time:
+ *                   type: string
+ *                   format: time
+ *                   description: The arrival time.
+ *                 schedule_date:
+ *                   type: string
+ *                   description: The scheduled date.
+ *                 status:
+ *                   type: integer
+ *                   description: The status of the schedule.
+ *       400:
+ *         description: Invalid input.
+ *       500:
+ *         description: Server error.
+ */
 router.get('/FindSchedules', BusTimeSchedulesController.getSchedulesByRouteId);
 
 /**
  * @swagger
- * /filterSchedules:
+ * /schedules/filterSchedules:
  *   post:
  *     summary: Filter schedules
  *     description: Filter bus schedules by arrival time and destination.
@@ -26,10 +65,11 @@ router.get('/FindSchedules', BusTimeSchedulesController.getSchedulesByRouteId);
  *       content:
  *         application/json:
  *           schema:
- *               arrivalTim
  *             type: object
- *             properties:e:
+ *             properties:
+ *               arrivalTime:
  *                 type: string
+ *                 format: time
  *                 description: The arrival time to filter schedules (HH:MM:SS format).
  *               destination:
  *                 type: string
@@ -47,15 +87,9 @@ router.get('/FindSchedules', BusTimeSchedulesController.getSchedulesByRouteId);
  *               items:
  *                 type: object
  *                 properties:
- *                   slot_id:
- *                     type: integer
- *                     description: The slot ID of the schedule.
- *                   route_id:
- *                     type: integer
- *                     description: The route ID.
- *                   bus_ntc:
+ *                   origin:
  *                     type: string
- *                     description: The bus NTC number.
+ *                     description: The origin of the bus.
  *                   departure_time:
  *                     type: string
  *                     format: time
@@ -64,18 +98,20 @@ router.get('/FindSchedules', BusTimeSchedulesController.getSchedulesByRouteId);
  *                     type: string
  *                     format: time
  *                     description: The arrival time.
- *                   schedule_date:
+ *                   number_plate:
  *                     type: string
- *                     description: The scheduled date.
- *                   status:
+ *                     description: The number plate of the bus.
+ *                   type:
+ *                     type: string
+ *                     description: The type of the bus.
+ *                   total_booked_seats:
  *                     type: integer
- *                     description: The status of the schedule.
+ *                     description: The total number of booked seats.
  *       400:
  *         description: Invalid input.
  *       500:
  *         description: Server error.
  */
 router.post('/filterSchedules', BusTimeSchedulesController.filterSchedulesByArrivalTimeAndDestination);
-
 
 module.exports = router;

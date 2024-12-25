@@ -16,20 +16,22 @@ class BusTimeScheduleRepository {
                 model: Buses,
                 required: true,
                 attributes: ['number_plate', 'type'],
+                where: {
+                    type: destination // Adjust this condition based on how 'destination' relates to the Bus model
+                }
             }],
             attributes: ['departure_time', 'arrival_time', 'schedule_date', 'status'],
         });
 
-        // Convert results to DTOs
-        return results.map(schedule => new ScheduledBusDTO(
-            destination, // assuming destination as an input
-            schedule.dataValues.arrival_time,
-            schedule.dataValues.departure_time,
-            schedule.dataValues.arrival_time,
-            schedule.Bus.dataValues.number_plate,
-            schedule.Bus.dataValues.type,
-            null // Total booked seats can be populated if relevant logic is available
-        ));
+        // Transform results as per your DTO
+        return results.map(schedule => ({
+            origin: destination, // Adjust based on actual logic
+            departure_time: schedule.departure_time,
+            arrival_time: schedule.arrival_time,
+            number_plate: schedule.Buss.number_plate,
+            type: schedule.Buss.type,
+            total_booked_seats: null, // Populate if you have this data
+        }));
     }
 }
 

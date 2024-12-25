@@ -15,7 +15,10 @@ class BusTimeScheduleController {
     async filterSchedulesByArrivalTimeAndDestination(req, res) {
         try {
             const { arrivalTime, destination } = req.body;
-            const filteredSchedules = await BusTimeSchedulesService.filterByArrivalTimeAndDestination(arrivalTime, destination);
+            if (!arrivalTime || !destination) {
+                return res.status(400).json({ error: 'arrivalTime and destination are required' });
+            }
+            const filteredSchedules = await BusTimeScheduleService.filterByArrivalTimeAndDestination(arrivalTime, destination);
             res.status(200).json(filteredSchedules);
             console.log(`Successfully filtered schedules by arrival time: ${arrivalTime} and destination: ${destination}`);
         } catch (error) {
