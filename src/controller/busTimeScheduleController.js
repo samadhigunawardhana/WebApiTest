@@ -11,5 +11,16 @@ class BusTimeScheduleController {
             res.status(500).json({error: error.message});
         }
     }
+
+    async filterSchedulesByArrivalTimeAndDestination(req, res) {
+        try {
+            const { arrivalTime, destination } = req.body;
+            const filteredSchedules = await BusTimeSchedulesService.filterByArrivalTimeAndDestination(arrivalTime, destination);
+            res.status(200).json(filteredSchedules);
+            console.log(`Successfully filtered schedules by arrival time: ${arrivalTime} and destination: ${destination}`);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 }
 module.exports = new BusTimeScheduleController();
