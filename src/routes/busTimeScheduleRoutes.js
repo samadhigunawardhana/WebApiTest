@@ -41,7 +41,7 @@ const router = express.Router();
  *                   type: string
  *                   format: time
  *                   description: The arrival time.
- *                 schedule_date:
+ *                 scheduled_date:
  *                   type: string
  *                   description: The scheduled date.
  *                 status:

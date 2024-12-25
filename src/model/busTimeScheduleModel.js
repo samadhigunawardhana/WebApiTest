@@ -14,7 +14,7 @@ const BusTimeScheduleModel = sequelize.define('bus_time_schedules', {
     bus_ntc: DataTypes.STRING,
     departure_time: DataTypes.TIME,
     arrival_time: DataTypes.TIME,
-    schedule_date: DataTypes.STRING,
+    scheduled_date: DataTypes.STRING,
     status: DataTypes.SMALLINT
 }, {
     tableName: 'bus_time_schedules',
