@@ -19,7 +19,7 @@ class BusTimeScheduleRepository {
                     type: destination // Adjust this condition based on how 'destination' relates to the Bus model
                 }
             }],
-            attributes: ['departure_time', 'arrival_time', 'schedule_date', 'status'],
+            attributes: ['departure_time', 'arrival_time', 'scheduled_date', 'status'],
         });
 
         // Transform results as per your DTO
