@@ -29,7 +29,7 @@ router.get('/FindSchedules/:route_id', BusTimeSchedulesController.getSchedulesBy
 /**
  * @swagger
  * /schedules/filterSchedules:
- *   get:
+ *   post:
  *     summary: Filter schedules
  *     description: Filter bus schedules by arrival time and destination.
  *     requestBody:
@@ -84,6 +84,6 @@ router.get('/FindSchedules/:route_id', BusTimeSchedulesController.getSchedulesBy
  *       500:
  *         description: Server error.
  */
-router.get('/filterSchedules', BusTimeSchedulesController.filterSchedulesByArrivalTimeAndDestination);
+router.post('/filterSchedules', BusTimeSchedulesController.filterSchedulesByArrivalTimeAndDestination);
 
 module.exports = router;
