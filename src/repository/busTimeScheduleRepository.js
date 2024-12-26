@@ -20,13 +20,13 @@ class BusTimeScheduleRepository {
                     where: {
                         destination: destination, // Filter by destination in the Routes table
                     },
-                    as: 'route', // Ensure the alias is used correctly
+                    as: 'route', // Match the alias defined in the associations
                 },
                 {
                     model: Buses,
                     required: true,
                     attributes: ['number_plate', 'type'],
-                    as: 'bus', // Alias for the Buses model
+                    as: 'bus', // Match the alias defined in the associations
                 }
             ],
             attributes: ['departure_time', 'arrival_time', 'scheduled_date', 'status'],
