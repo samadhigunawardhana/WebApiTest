@@ -67,7 +67,7 @@ router.get('/FindSchedules/:route_id', BusTimeSchedulesController.getSchedulesBy
  *                     format: time
  *                     description: The departure time.
  *                   arrival_time:
- *                     type: string
+ *                     type: time
  *                     format: time
  *                     description: The arrival time.
  *                   number_plate:
