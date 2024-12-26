@@ -1,5 +1,4 @@
-const BusTimeSchedules = require('../model/busTimeScheduleModel');
-const Buses = require('../model/busModel');
+const { BusTimeSchedules, Buses } = require('../model');
 const ScheduledBusDTO = require('../DataTransferObject/DetailsOfScheduledBus');
 
 class BusTimeScheduleRepository {
