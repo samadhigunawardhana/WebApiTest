@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 
-const Buses = sequelize.define('Busses', {
+const Buses = sequelize.define('Buses', {
     ntc_no:{
         type: DataTypes.STRING,
         primaryKey: true,
