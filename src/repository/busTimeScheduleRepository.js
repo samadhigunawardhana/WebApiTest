@@ -33,10 +33,10 @@ class BusTimeScheduleRepository {
 
         // Transform results into the desired DTO format
         return results.map(schedule => ({
-            origin: schedule.Route.origin, // Access the 'origin' from the Routes model
+            origin: schedule.Route.origin, // Access 'origin' from the Routes model
             departure_time: schedule.departure_time,
             arrival_time: schedule.arrival_time,
-            number_plate: schedule.Bus.number_plate, // Ensure correct referencing of the bus model
+            number_plate: schedule.Bus.number_plate, // Correct referencing of the bus model
             type: schedule.Bus.type,
             total_booked_seats: null, // Populate this if applicable in your system
         }));
