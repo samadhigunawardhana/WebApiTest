@@ -5,12 +5,12 @@ const router = express.Router();
 
 /**
  * @swagger
- * /schedules/FindSchedules:
+ * /schedules/FindSchedules/{route_id}:
  *   get:
  *     summary: Find all schedules by Route ID
  *     description: Retrieve all bus schedules for a specific route ID.
  *     parameters:
- *       - in: query
+ *       - in: path
  *         name: route_id
  *         schema:
  *           type: integer
@@ -24,7 +24,7 @@ const router = express.Router();
  *       500:
  *         description: Server error.
  */
-router.get('/FindSchedules', BusTimeSchedulesController.getSchedulesByRouteId);
+router.get('/FindSchedules/:route_id', BusTimeSchedulesController.getSchedulesByRouteId);
 
 /**
  * @swagger
