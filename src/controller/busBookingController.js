@@ -28,8 +28,16 @@ class BusBookingController {
     async getAllAvailableSeats(req, res) {
         try {
             console.log('Received request to fetch available seats');
-            const { number_plate, scheduled_slot, booking_date } = req.body;
+            
+            // Use req.query to retrieve parameters for GET request
+            const { number_plate, scheduled_slot, booking_date } = req.query;
 
+            // Check if parameters are provided
+            if (!number_plate || !scheduled_slot || !booking_date) {
+                return res.status(400).json({ message: "All parameters (number_plate, scheduled_slot, booking_date) are required" });
+            }
+
+            // Assuming SeatBookingService is properly set up to fetch available seats
             const availableSeats = await SeatBookingService.getAllAvailableSeats(
                 number_plate,
                 scheduled_slot,
@@ -38,20 +46,14 @@ class BusBookingController {
 
             if (availableSeats && availableSeats.length > 0) {
                 console.log('Successfully fetched available seats');
-                res.status(200).json({ availableSeats });
+                return res.status(200).json({ availableSeats });
             } else {
                 console.warn('No available seats found');
-                res.status(404).json({ message: 'No available seats' });
+                return res.status(404).json({ message: 'No available seats' });
             }
         } catch (error) {
-            // console.error('Error occurred while fetching available seats:', error);
-            // res.status(500).json({ message: 'Internal Server Error' });
-            res.status(500).json({ 
-                message: 'Internal Server Error', 
-                error: error.message || 'Unknown error occurred', 
-                stack: process.env.NODE_ENV === 'development' ? error.stack : undefined 
-            });
-            
+            console.error('Error occurred while fetching available seats:', error);
+            return res.status(500).json({ message: 'Internal Server Error' });
         }
     }
 }
