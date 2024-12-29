@@ -6,6 +6,7 @@ const PaymentReciept = sequelize.define('payment_reciept', {
     payment_reciept_id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
     passenger_id: DataTypes.STRING,
     payment_amount: DataTypes.FLOAT,
