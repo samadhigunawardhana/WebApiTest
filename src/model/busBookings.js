@@ -6,6 +6,7 @@ const BusBooking = sequelize.define('booking', {
     booking_id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
     payment_reciept_id: DataTypes.INTEGER,
     number_plate: DataTypes.STRING,
