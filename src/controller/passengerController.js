@@ -54,10 +54,10 @@ class PassengerController {
 
   async passengerLogin(req, res){
     try{
-      const {tele, password} = req.body;
-      const loginVerified = await passengerService.passengerVerification(tele, password);
+      const {contact_info, password} = req.body;
+      const loginVerified = await passengerService.passengerVerification(contact_info, password);
       if (loginVerified) {
-        const jasonwebToken = jwt.sign({ tele, password }, JSON_SECRET_kEY, { expiresIn: '3h' });
+        const jasonwebToken = jwt.sign({ contact_info, password }, JSON_SECRET_kEY, { expiresIn: '3h' });
         res.status(200).json({ message: 'Passenger verified sucessfully', jasonwebToken});
         
       }

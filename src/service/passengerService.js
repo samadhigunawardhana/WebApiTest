@@ -10,8 +10,8 @@ class PassengerService {
     return createPassenger;
   }
 
-  async passengerVerification(tele, password){
-    const passengerDetails = await PassangerRepository.findByTele(tele);
+  async passengerVerification(contact_info, password){
+    const passengerDetails = await PassangerRepository.findByTele(contact_info);
     if (!passengerDetails) {
       throw new Error('Invalid Telephone No');
     }
