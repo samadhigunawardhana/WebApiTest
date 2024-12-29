@@ -44,8 +44,14 @@ class BusBookingController {
                 res.status(404).json({ message: 'No available seats' });
             }
         } catch (error) {
-            console.error('Error occurred while fetching available seats:', error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            // console.error('Error occurred while fetching available seats:', error);
+            // res.status(500).json({ message: 'Internal Server Error' });
+            res.status(500).json({ 
+                message: 'Internal Server Error', 
+                error: error.message || 'Unknown error occurred', 
+                stack: process.env.NODE_ENV === 'development' ? error.stack : undefined 
+            });
+            
         }
     }
 }

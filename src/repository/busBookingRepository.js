@@ -13,7 +13,7 @@ class BusBookingRepository {
             });
     
            
-            return seatsBooked.map(seat => seat.seat_number);
+            return seatsBooked.map(seat => seat.seat_no);
         } catch (error) {
             console.error(error);
             return [];
