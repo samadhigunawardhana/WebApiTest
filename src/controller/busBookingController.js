@@ -28,8 +28,9 @@ class BusBookingController {
     async getAllAvailableSeats(req, res) {
         try {
             console.log('Received request to fetch available seats');
-            
-            const { number_plate, scheduled_slot, booking_date } = req.params;
+    
+            // Extract parameters from the body
+            const { number_plate, scheduled_slot, booking_date } = req.body;
     
             // Check if parameters are provided
             if (!number_plate || !scheduled_slot || !booking_date) {
@@ -37,7 +38,11 @@ class BusBookingController {
             }
     
             // Assuming BusBookingService is properly set up
-            const availableSeats = await busBookingService.getAllAvailableSeats(number_plate, scheduled_slot, booking_date);
+            const availableSeats = await busBookingService.getAllAvailableSeats(
+                number_plate,
+                scheduled_slot,
+                booking_date
+            );
     
             if (availableSeats && availableSeats.length > 0) {
                 console.log('Successfully fetched available seats');
@@ -51,6 +56,7 @@ class BusBookingController {
             return res.status(500).json({ message: 'Internal Server Error' });
         }
     }
+    
 }
 
 module.exports = new BusBookingController();
