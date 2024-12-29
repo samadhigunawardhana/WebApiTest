@@ -1,5 +1,6 @@
 const BookingRepository = require('../repository/busBookingRepository');
 const paymentRepository = require('../repository/paymentRepository');
+const busesRepository = require('../repository/busesRepository');
 
 class BusBookingService {
     async availableSeats(seating = [], VehicleNumber, SlotsAllocated, date_of_booking) {
@@ -74,7 +75,7 @@ class BusBookingService {
     async getAllAvailableSeats(number_plate, scheduled_slot, booking_date) {
         try {
             console.log('Fetching seat availability information...');
-            const busType = await BookingRepository.getBusTypeByNumberPlate(number_plate);
+            const busType = await busesRepository.getBusTypeByNumberPlate(number_plate);
             console.log('Bus type retrieved:', busType);
 
             if (!busType) {

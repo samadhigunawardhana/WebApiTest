@@ -9,7 +9,7 @@ class BusesRepository{
         try {
             console.log(`Fetching bus type for vehicle register number: ${number_plate}`);
             const busType = await Buses.findOne({
-                where: { vehicle_register_number: number_plate },
+                where: { number_plate: number_plate },
                 attributes: ['type'],
             });
             console.log(`Retrieved bus type: ${busType?.type || 'Not Found'}`);
