@@ -70,6 +70,39 @@ class SeatBookingService {
             throw error;
         }
     }
+
+    async getAllAvailableSeats(number_plate, scheduled_slot, booking_date) {
+        try {
+            console.log('Fetching seat availability information...');
+            const busType = await BusesRepository.getBusTypeByNumberPlate(number_plate);
+            console.log('Bus type retrieved:', busType);
+
+            if (!busType) {
+                console.error('No bus type found for the given number plate');
+                return [];
+            }
+
+            const bookedSeats = await BookingRepository.getBookedSeatsListByNumberPlateAndTimeSlot(
+                number_plate,
+                scheduled_slot,
+                booking_date
+            );
+            console.log('Booked seats retrieved:', bookedSeats);
+
+            let availableSeats = [];
+            if (['Semi-Luxury', 'Normal'].includes(busType)) {
+                availableSeats = BusSeatsUtil.filterAvailableSemiLuxuryOrNormalSeats(bookedSeats);
+            } else if (busType === 'Luxury') {
+                availableSeats = BusSeatsUtil.filterAvailableLuxurySeats(bookedSeats);
+            }
+
+            console.log('Successfully fetched available seats:', availableSeats);
+            return availableSeats;
+        } catch (error) {
+            console.error('Error occurred while fetching available seats:', error);
+            return [];
+        }
+    }
 }
 
 module.exports = new SeatBookingService();

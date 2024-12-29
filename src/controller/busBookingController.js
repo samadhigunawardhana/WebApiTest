@@ -24,6 +24,30 @@ class BusBookingController {
             return res.status(500).json({ message: 'Internal Server Error', error: error.message || error });
         }
     }
+
+    async getAllAvailableSeats(req, res) {
+        try {
+            console.log('Received request to fetch available seats');
+            const { number_plate, scheduled_slot, booking_date } = req.body;
+
+            const availableSeats = await SeatBookingService.getAllAvailableSeats(
+                number_plate,
+                scheduled_slot,
+                booking_date
+            );
+
+            if (availableSeats && availableSeats.length > 0) {
+                console.log('Successfully fetched available seats');
+                res.status(200).json({ availableSeats });
+            } else {
+                console.warn('No available seats found');
+                res.status(404).json({ message: 'No available seats' });
+            }
+        } catch (error) {
+            console.error('Error occurred while fetching available seats:', error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    }
 }
 
 module.exports = new BusBookingController();

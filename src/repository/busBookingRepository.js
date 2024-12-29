@@ -29,6 +29,25 @@ class BusBookingRepository {
             throw error;
         }
     }
+
+    async getBookedSeatsListByNumberPlateAndTimeSlot(number_plate, scheduled_slot, booking_date) {
+        try {
+            console.log(`Fetching booked seats for vehicle: ${number_plate}, slot: ${scheduled_slot}, date: ${booking_date}`);
+            const bookedSeats = await BusBooking.findAll({
+                where: {
+                    number_plate,
+                    scheduled_slot,
+                    booking_date,
+                },
+                attributes: ['seat_no'],
+            });
+            console.log(`Retrieved booked seats: ${bookedSeats.map(seat => seat.seat_no)}`);
+            return bookedSeats.map(seat => seat.seat_no);
+        } catch (error) {
+            console.error('Error fetching booked seats:', error);
+            return [];
+        }
+    }
     
 }
 
