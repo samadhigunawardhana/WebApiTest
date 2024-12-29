@@ -1,4 +1,7 @@
 const passengerService = require('../service/passengerService');
+const jwt = require('jsonwebtoken');
+
+const JSON_SECRET_kEY = "d4f7b2e1c9a8f3g6h1k0j4p9l2m8o7r6x5v2y3z1t0w9n8b6q5s7v4u1y3k8t5";
 
 class PassengerController {
   async passengerRegistration(req, res) {
@@ -17,7 +20,8 @@ class PassengerController {
       const {tele, password} = req.body;
       const loginVerified = await passengerService.passengerVerification(tele, password);
       if (loginVerified) {
-        res.status(200).json({ message: 'Passenger verified sucessfully' });
+        const jasonwebToken = jwt.sign({ tele, password }, JSON_SECRET_kEY, { expiresIn: '3h' });
+        res.status(200).json({ message: 'Passenger verified sucessfully', jasonwebToken});
         
       }
     }catch(error){
