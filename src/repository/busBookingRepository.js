@@ -33,7 +33,7 @@ class BusBookingRepository {
     async getBookedSeatsListByNumberPlateAndTimeSlot(number_plate, scheduled_slot, booking_date) {
         try {
             console.log(`Fetching booked seats for vehicle: ${number_plate}, slot: ${scheduled_slot}, date: ${booking_date}`);
-            const bookedSeats = await BusBooking.findAll({
+            const bookedSeats = await Booking.findAll({
                 where: {
                     number_plate,
                     scheduled_slot,

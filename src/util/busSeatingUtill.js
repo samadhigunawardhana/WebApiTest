@@ -22,4 +22,4 @@ class BusSeatingUtils {
  
 }
 
-export default BusSeatingUtils;
+module.exports = new BusSeatingUtils();
