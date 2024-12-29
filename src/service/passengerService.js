@@ -5,7 +5,7 @@ class PassengerService {
   async passengerRegistration(nic_no, name, address, tele, email, password) {
     
     const hashedPswrd = await bcrypt.hash(password, 10);
-    const passenger = { nic_no, name, address, contact_info: tele, email, password: hashedPswrd };
+    const passenger = { nic_no, full_name: name, address, contact_info: tele, email, password: hashedPswrd };
     const createPassenger = await PassangerRepository.addnewpassenger(passenger);
     return createPassenger;
   }
