@@ -2,7 +2,7 @@ const PassangerRepository = require('../repository/passengeRepository');
 const bcrypt = require('bcrypt');
 
 class PassengerService {
-  async passengerRegistration(ID_no, name, address, tele, email, pwd) {
+  async passengerRegistration(ID_no, name, address, tele, email, password) {
     
     const hashedPswrd = await bcrypt.hash(password, 10);
     const passenger = { ID_no, name, address, tele, email, password: hashedPswrd };
@@ -10,13 +10,13 @@ class PassengerService {
     return createPassenger;
   }
 
-  async passengerVerification(tele, pwd){
+  async passengerVerification(tele, password){
     const passengerDetails = await PassangerRepository.findByTele(tele);
     if (!passengerDetails) {
       throw new Error('Invalid Telephone No');
     }
     else{
-      const verifyPassword = await bcrypt.compare(pwd, passengerDetails.pwd);
+      const verifyPassword = await bcrypt.compare(password, passengerDetails.password);
       if (verifyPassword) {
         return passengerDetails;
       }
