@@ -74,7 +74,7 @@ class BusBookingService {
     async getAllAvailableSeats(number_plate, scheduled_slot, booking_date) {
         try {
             console.log('Fetching seat availability information...');
-            const busType = await BusesRepository.getBusTypeByNumberPlate(number_plate);
+            const busType = await BookingRepository.getBusTypeByNumberPlate(number_plate);
             console.log('Bus type retrieved:', busType);
 
             if (!busType) {
