@@ -6,7 +6,7 @@ class PassengerRepository {
     return newPassenger;
   }
 
-  async findByTele(tele){
+  async findByTele(contact_info){
     return await Passenger.findOne({where: { contact_info }})
   }
 }
