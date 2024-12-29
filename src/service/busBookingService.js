@@ -15,26 +15,26 @@ class SeatBookingService {
     
     async seatBooking(payload) {
         const { passenger_id, seat_number_list, bus_number_plate, scheduled_slot, total_amount, date_of_booking } = payload;
-        
+    
         try {
             const seatAvailability = await this.availableSeats(seat_number_list, bus_number_plate, scheduled_slot, date_of_booking);
-            
+    
             if (seatAvailability.length > 0) { 
                 const paymentTime = new Date();
                 const paymentData = { passenger_id, total_amount, payment_time: paymentTime };
-                
+    
                 const paymentId = await paymentRepository.save(paymentData); 
-                
+    
                 if (paymentId) {  
                     const bookingIds = [];
-                    for (const seat_number of seat_number_list) {
+                    for (const seat_no of seat_number_list) { // Use `seat_no` here
                         const bookingData = {
                             passenger_id,
-                            payment_slip_id: paymentId,  
-                            bus_number_plate,
-                            schedule_slot: scheduled_slot,
-                            seat_number,
-                            date_of_booking
+                            payment_reciept_id: paymentId,  // Use `payment_reciept_id`
+                            number_plate: bus_number_plate, // Use `number_plate`
+                            scheduled_slot,
+                            seat_no, // Use `seat_no`
+                            booking_date: date_of_booking
                         };
                         const bookingId = await BookingRepository.save(bookingData);
                         bookingIds.push(bookingId);
@@ -55,6 +55,7 @@ class SeatBookingService {
             throw error;
         }
     }
+    
 
    
 }
