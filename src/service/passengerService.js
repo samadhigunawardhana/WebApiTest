@@ -2,10 +2,10 @@ const PassangerRepository = require('../repository/passengeRepository');
 const bcrypt = require('bcrypt');
 
 class PassengerService {
-  async passengerRegistration(ID_no, name, address, tele, email, password) {
+  async passengerRegistration(nic_no, name, address, tele, email, password) {
     
     const hashedPswrd = await bcrypt.hash(password, 10);
-    const passenger = { ID_no, name, address, tele, email, password: hashedPswrd };
+    const passenger = { nic_no, name, address, tele, email, password: hashedPswrd };
     const createPassenger = await PassangerRepository.addnewpassenger(passenger);
     return createPassenger;
   }
