@@ -1,5 +1,6 @@
 const express = require('express');
 const RouteControllerVariable = require('../controller/routesController');
+const jasonWebTokenAuthentication = require('../config/jasonWebToken');
 
 const router = express.Router();
 
@@ -13,6 +14,6 @@ const router = express.Router();
  *       200:
  *         description: Successfully set all routes.
  */
-router.get('/getAllRoutes', RouteControllerVariable.getAllRoutes);
+router.get('/getAllRoutes', jasonWebTokenAuthentication, RouteControllerVariable.getAllRoutes);
 
 module.exports = router;

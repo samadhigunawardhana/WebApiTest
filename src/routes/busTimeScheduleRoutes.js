@@ -1,5 +1,6 @@
 const express = require('express');
 const BusTimeSchedulesController = require('../controller/busTimeScheduleController');
+const jasonWebTokenAuthentication = require('../config/jasonWebToken');
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ const router = express.Router();
  *       500:
  *         description: Server error.
  */
-router.get('/FindSchedules/:route_id', BusTimeSchedulesController.getSchedulesByRouteId);
+router.get('/FindSchedules/:route_id', jasonWebTokenAuthentication, BusTimeSchedulesController.getSchedulesByRouteId);
 
 /**
  * @swagger
@@ -84,6 +85,6 @@ router.get('/FindSchedules/:route_id', BusTimeSchedulesController.getSchedulesBy
  *       500:
  *         description: Server error.
  */
-router.post('/filterSchedules', BusTimeSchedulesController.filterSchedulesByArrivalTimeAndDestination);
+router.post('/filterSchedules', jasonWebTokenAuthentication, BusTimeSchedulesController.filterSchedulesByArrivalTimeAndDestination);
 
 module.exports = router;
