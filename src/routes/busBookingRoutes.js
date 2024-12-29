@@ -46,7 +46,7 @@ router.post('/saveSeats', busbookingController.seatBooking);
  *         description: Server error.
  */
 
-router.get('/getAvailableSeats', busbookingController.getAllAvailableSeats);
+router.get('/getAvailableSeats/:number_plate/:scheduled_slot/:booking_date', busbookingController.getAllAvailableSeats);
 
 // Export the router
 module.exports = router;

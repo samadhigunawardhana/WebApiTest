@@ -30,7 +30,7 @@ class BusBookingController {
             console.log('Received request to fetch available seats');
             
             // Use req.query to retrieve parameters for GET request
-            const { number_plate, scheduled_slot, booking_date } = req.query;
+            const { number_plate, scheduled_slot, booking_date } = req.params;
 
             // Check if parameters are provided
             if (!number_plate || !scheduled_slot || !booking_date) {
