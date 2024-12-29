@@ -1,7 +1,7 @@
 const BookingRepository = require('../repository/busBookingRepository');
 const paymentRepository = require('../repository/paymentRepository');
 
-class SeatBookingService {
+class BusBookingService {
     async availableSeats(seating = [], VehicleNumber, SlotsAllocated, date_of_booking) {
         try {
             console.log('Checking available seats:', { seating, VehicleNumber, SlotsAllocated, date_of_booking });
@@ -90,10 +90,12 @@ class SeatBookingService {
             console.log('Booked seats retrieved:', bookedSeats);
 
             let availableSeats = [];
-            if (['Semi-Luxury', 'Normal'].includes(busType)) {
-                availableSeats = BusSeatsUtil.filterAvailableSemiLuxuryOrNormalSeats(bookedSeats);
+            if (busType === 'Semi-Luxury') {
+                availableSeats = await busSeatingUtils.SemiLuxuryFiltering(bookedSeats);
             } else if (busType === 'Luxury') {
-                availableSeats = BusSeatsUtil.filterAvailableLuxurySeats(bookedSeats);
+                availableSeats = await busSeatingUtils.LuxuryFiltering(bookedSeats);
+            } else if (busType === 'Ordinary') {
+                availableSeats = await busSeatingUtils.OrdinaryFiltering(bookedSeats);
             }
 
             console.log('Successfully fetched available seats:', availableSeats);
@@ -105,4 +107,4 @@ class SeatBookingService {
     }
 }
 
-module.exports = new SeatBookingService();
+module.exports = new BusBookingService();
