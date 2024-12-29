@@ -29,21 +29,16 @@ class BusBookingController {
         try {
             console.log('Received request to fetch available seats');
             
-            // Use req.query to retrieve parameters for GET request
             const { number_plate, scheduled_slot, booking_date } = req.params;
-
+    
             // Check if parameters are provided
             if (!number_plate || !scheduled_slot || !booking_date) {
                 return res.status(400).json({ message: "All parameters (number_plate, scheduled_slot, booking_date) are required" });
             }
-
-            // Assuming SeatBookingService is properly set up to fetch available seats
-            const availableSeats = await SeatBookingService.getAllAvailableSeats(
-                number_plate,
-                scheduled_slot,
-                booking_date
-            );
-
+    
+            // Assuming BusBookingService is properly set up
+            const availableSeats = await busBookingService.getAllAvailableSeats(number_plate, scheduled_slot, booking_date);
+    
             if (availableSeats && availableSeats.length > 0) {
                 console.log('Successfully fetched available seats');
                 return res.status(200).json({ availableSeats });
