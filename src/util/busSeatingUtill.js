@@ -1,4 +1,5 @@
-import { Luxury, SemiLuxury, Ordinary } from './seats.js';
+
+const { Luxury, SemiLuxury, Ordinary } = require('./seats.js'); 
 
 class BusSeatingUtils {
   async LuxuryFiltering(BookSeats = []) {
