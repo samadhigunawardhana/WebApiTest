@@ -15,7 +15,7 @@ app.use('/api-check',swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 app.use('/passenger',passengerRoutes);
 app.use('/bus-routes',routeRoutes);
 app.use('/schedules',busTimeschedule);
-app.use('/booking',busBooking)
+app.use('/booking',busBooking);
 app.use
 
 
