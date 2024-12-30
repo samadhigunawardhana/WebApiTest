@@ -6,7 +6,7 @@ const jasonWebTokenAuthentication = require('../config/jasonWebToken');
 const router = express.Router();
 
 // Define routes
-router.post('/saveSeats', jasonWebTokenAuthentication, busbookingController.seatBooking);
+router.post('/saveBusSeats', jasonWebTokenAuthentication, busbookingController.seatBooking);
 
 // Define the route to get available seats
 
