@@ -1,5 +1,4 @@
-
-const { Luxury, SemiLuxury, Ordinary } = require('./seats.js'); 
+const { Luxury, SemiLuxury, Ordinary } = require('./BusCapacity.js'); 
 
 class BusSeatingUtils {
   async LuxuryFiltering(BookSeats = []) {
