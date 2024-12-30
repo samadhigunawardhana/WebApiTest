@@ -12,7 +12,7 @@ const Passenger = sequelize.define('passenger', {
   email: DataTypes.STRING,
   password: DataTypes.STRING,
 }, {
-  tableName: 'passenger',
+  tableName: 'passenger_tbl',
   timestamps: false,
 });
 

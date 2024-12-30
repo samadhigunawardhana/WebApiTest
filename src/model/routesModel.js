@@ -10,7 +10,7 @@ const RouteModel = sequelize.define('routes',{
     destination: DataTypes.STRING,
     distance: DataTypes.FLOAT
 }, {
-    tableName: 'routes',
+    tableName: 'routes_tbl',
     timestamps: false,
 });
 

@@ -14,7 +14,7 @@ const Buses = sequelize.define('Buses', {
     operator_id: DataTypes.STRING,
     conductor_id: DataTypes.STRING
 }, {
-    tableName: 'buses',
+    tableName: 'bus_tbl',
     timestamps: false,
 });
 

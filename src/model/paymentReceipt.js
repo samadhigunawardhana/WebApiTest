@@ -13,7 +13,7 @@ const PaymentReciept = sequelize.define('payment_reciept', {
     booking_id: DataTypes.INTEGER,
     issued_time: DataTypes.TIME
 }, {
-    tableName: 'payment_reciept_history',
+    tableName: 'payment_tbl',
     timestamps: false,
 });
 

@@ -17,7 +17,7 @@ const BusTimeScheduleModel = sequelize.define('bus_time_schedules', {
     scheduled_date: DataTypes.STRING,
     status: DataTypes.SMALLINT
 }, {
-    tableName: 'bus_time_schedules',
+    tableName: 'time_schedule_tbl',
     timestamps: false,
 });
 

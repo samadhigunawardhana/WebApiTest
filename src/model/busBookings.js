@@ -15,7 +15,7 @@ const BusBooking = sequelize.define('booking', {
     seat_no: DataTypes.STRING,
     passenger_id: DataTypes.STRING
 }, {
-    tableName: 'bookings',
+    tableName: 'bookings_tbl',
     timestamps: false,
 });
 
